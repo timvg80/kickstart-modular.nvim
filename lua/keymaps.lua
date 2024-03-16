@@ -11,6 +11,13 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+-- Setting the escape keymap
+vim.keymap.set('i', 'jk', '<ESC>', { desc = 'Exit insert mode using jk' })
+
+-- Setting the comments
+vim.api.nvim_set_keymap('n', '<C-_>', 'gcc', { noremap = false })
+vim.api.nvim_set_keymap('v', '<C-_>', 'gcgv', { noremap = false })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
