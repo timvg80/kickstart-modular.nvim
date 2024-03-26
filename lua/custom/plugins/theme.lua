@@ -1,14 +1,10 @@
 return {
-  'catppuccin/nvim',
+  'folke/tokyonight.nvim',
   name = 'theme',
   lazy = false,
-  priority = 999,
+  priority = 1000,
   config = function()
-    vim.cmd 'colorscheme catppuccin'
-    require('catppuccin').setup {
-      integrations = {
-        nvimtree = true,
-      },
-    }
+    vim.cmd.colorscheme 'tokyonight-night'
+    vim.cmd.hi 'Comment gui=none'
   end,
 }
