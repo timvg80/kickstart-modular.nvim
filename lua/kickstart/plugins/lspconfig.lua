@@ -178,7 +178,6 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
         'black',
-        'debugpy',
         'flake8',
         'isort',
         'mypy',
