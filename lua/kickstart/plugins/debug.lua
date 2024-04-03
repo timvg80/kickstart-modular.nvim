@@ -48,14 +48,17 @@ return {
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<leader>dsi', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<leader>sov', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<leader>sot', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<leader>dt', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>dT', function()
+    vim.keymap.set('n', '<leader>bc', dap.continue, { desc = 'Debug: Start/Continue' })
+    -- vim.keymap.set('n', '<leader>bsi', dap.step_into, { desc = 'Debug: Step Into' })
+    -- vim.keymap.set('n', '<leader>sov', dap.step_over, { desc = 'Debug: Step Over' })
+    -- vim.keymap.set('n', '<leader>sot', dap.step_out, { desc = 'Debug: Step Out' })
+    vim.keymap.set('n', '<leader>bt', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+    vim.keymap.set('n', '<leader>bT', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
+
+    -- Customising the breakpoint icon
+    vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -74,20 +77,20 @@ return {
           -- step_back = 'b',
           -- run_last = '▶▶',
           -- terminate = '⏹',
-          -- disconnect = '⏏',
+          disconnect = '⏏',
         },
       },
     }
 
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-    vim.keymap.set('n', '<leader>dls', dapui.toggle, { desc = 'Debug: See last session result.' })
+    vim.keymap.set('n', '<leader>bl', dapui.toggle, { desc = 'Debug: See last session result.' })
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-    -- Install golang specific config
+    -- Install specific config
     require('dap-go').setup()
-    require('dap-python').setup()
+    require('dap-python').setup(require('dap.ext.vscode').load_launchjs())
   end,
 }

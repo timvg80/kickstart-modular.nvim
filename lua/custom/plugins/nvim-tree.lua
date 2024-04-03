@@ -10,6 +10,6 @@ return {
         adaptive_size = true,
       },
     }
-    vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<CR>', {})
+    vim.keymap.set('n', '<leader>fe', ':NvimTreeToggle<CR>', { desc = '[F]ile [E]xplorer (NvimTree)' })
   end,
 }
