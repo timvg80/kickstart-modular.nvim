@@ -62,4 +62,7 @@ vim.opt.scrolloff = 10
 -- Setting the commandbar height
 vim.opt.cmdheight = 0
 
+-- Setting the line length marker
+vim.opt.colorcolumn = '120'
+
 -- vim: ts=2 sts=2 sw=2 et
