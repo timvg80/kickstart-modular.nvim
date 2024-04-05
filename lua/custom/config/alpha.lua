@@ -20,6 +20,7 @@ dashboard.section.buttons.val = {
   dashboard.button('e', '  New file', ':ene <BAR> startinsert <CR>'),
   dashboard.button('r', '  Recently used files', ':Telescope oldfiles <CR>'),
   dashboard.button('g', '  Find text', ':Telescope live_grep <CR>'),
+  dashboard.button('SPC wr', '󰁯  Restore Session For Current Directory', '<cmd>SessionRestore<CR>'),
   -- dashboard.button('c', '  Configuration', ':e ~/.config/nvim/init.vim<CR>'),
   dashboard.button('q', '  Quit Neovim', ':qa<CR>'),
 }
